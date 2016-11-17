@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Quote.destroy_all
+
+User.create!(
+  email:'bob@bob.com',
+  password:'testtest')
+
+25.times do |n|
+  email = "bob-#{n+1}@user.com"
+  password = 'testtest'
+
+  User.create!(
+    email: email,
+    password: password)
+end
+
+users = User.take(6)
+25.times do |n|
+  content = Faker::Lorem.sentence(3)
+  users.each { |user| user.quotes.create!(content:content) }
+end
