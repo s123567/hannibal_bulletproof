@@ -8,6 +8,8 @@ class QuoteTest < ActiveSupport::TestCase
   def setup
   	@quote = Quote.new(content:"")
   	@quote_big = Quote.new(content:"a"*156)
+    @user = User.create!(email:"joe@joe.com", passwrd: 'testtest')
+    @quote_valid = Quote.new(content:'dhfgdfdf', user_id: @user.id)
   end
 
   test "a quote without content should be invalid" do
