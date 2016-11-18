@@ -13,7 +13,14 @@ class QuotesController < ApplicationController
   end
 
   def destroy
-    
+    @user = current_user
+    @quote = Quote.find(params[:id])
+    @quote.destroy
+    if @quote.destroy
+      redirect_to @user
+    else
+      render 'pages/error'
+    end
   end
 
   private

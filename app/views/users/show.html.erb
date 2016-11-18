@@ -8,9 +8,10 @@
 <% end %>
 
 
- <p>Mes quotes sont </p>
+ <p>Mes <%= @user.quotes.size if @user.quotes.size > 1 %> quotes sont </p>
  <% @quotes.each do |q| %>
   <%= q.content %>
+  <%= link_to 'X', quote_path(q), method: :delete%>
  <% end %>
   <br>
 <%= link_to 'Accueil', root_path %>

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class QuoteTest < ActiveSupport::TestCase
-  include Devise::Test::ControllerHelpers
+  # include Devise::Test::ControllerHelpers
 
   # test "the truth" do
   #   assert true
@@ -41,6 +41,12 @@ class QuoteTest < ActiveSupport::TestCase
   test "a user ID should be present on the quote creation" do
     @quote_to_user.user_id = nil
     assert_not @quote_to_user.valid?
+  end
+
+  test "delete action should decrease Quote.count" do
+        assert_difference 'Quote.count' do
+          delete @quote_valid
+        end
   end
 
 
