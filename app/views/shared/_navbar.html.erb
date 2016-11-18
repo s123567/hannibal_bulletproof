@@ -8,7 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand"><%= link_to "Hannibal", root_path %></a>
+      <a class="navbar-brand">
+        <% if user_signed_in? %>
+          <%= link_to "Hannibal", current_user %>
+        <% else %>
+          <%= link_to "Hannibal", root_path %>
+        <% end %>
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,10 +26,8 @@
         <% end %>
           <li class=""><%= link_to "login", new_user_session_path %></li>
           <li class=""><%= link_to "Register", new_user_registration_path %></li>
+          <li class=""><%= link_to "Index", root_path %></li>
           <!--  -->
-
-
-        <li><a href="#">Link</a></li>
         
       </ul>
       
