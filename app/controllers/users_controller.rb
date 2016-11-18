@@ -6,6 +6,9 @@ before_action :find_user, only:[:show]
   def show
     @quote = Quote.new
     @quotes = @user.quotes.all
+    if user_signed_in?
+      @user = current_user
+    end
   end
 
   private

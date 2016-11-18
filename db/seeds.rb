@@ -27,3 +27,4 @@ users = User.take(6)
   content = Faker::Lorem.sentence(3)
   users.each { |user| user.quotes.create!(content:content) }
 end
+

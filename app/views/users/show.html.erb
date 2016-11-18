@@ -14,4 +14,25 @@
   <%= link_to 'X', quote_path(q), method: :delete%>
  <% end %>
   <br>
+  <% if current_user.likes.any? %>
+    <p>Les quotes que j'aime</p>
+    <% current_user.likes.each do |like| %>
+      <li><%= like.quote.content %></li>
+    <% end %>
+  <% end %>
+  
+  <% if @user == current_user %>
+    <p>All the quotes</p>
+    <% Quote.all.each do |quote|%>
+      <p><%= quote.content %> de l'user <%= quote.user.email %></p>
+      <% if @user.liked?(quote) %>
+      <li><span><%= link_to 'unlike', like_path(current_user.likes.where(quote: quote).first), method: :delete %></span></li>
+      <% else %>
+      <li><span><%= link_to 'like', likes_path(quote_id: quote.id), method: :post %></span></li>
+      <% end %>
+      
+    <% end %> <!-- Quote.all.each do |quote| -->
+  <% end %> <!-- user == current user -->
+
+
 <%= link_to 'Accueil', root_path %>
