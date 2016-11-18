@@ -1,7 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   content: MyText
+orange:
+  content: "dhfjdff it's a stuffed animale!"
+  created_at: <%= 10.minutes.ago %>
+  user: bob
+
+tau_manifesto:
+  content: " dfghdhfghit's a stuffed animal"
+  created_at: <%= 3.years.ago %>
+  user: bob
+
+cat_video:
+  content: "OOOOOOit's a stuffed animald"
+  created_at: <%= 2.hours.ago %>
+  user: bob
+
+most_recent:
+  content: "RECENNNT it's a stuffed animal"
+  created_at: <%= Time.zone.now %>
+  user: bob
 
 # two:
 #   content: MyText
