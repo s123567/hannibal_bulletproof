@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class QuoteTest < ActiveSupport::TestCase
+  include Devise::Test::ControllerHelpers
+
   # test "the truth" do
   #   assert true
   # end
@@ -40,5 +42,6 @@ class QuoteTest < ActiveSupport::TestCase
     @quote_to_user.user_id = nil
     assert_not @quote_to_user.valid?
   end
+
 
 end
