@@ -1,0 +1,16 @@
+<h1>Hello je suis un user mon mail est <%= @user.email %></h1>
+
+<% if @user == current_user %>
+  <%= simple_form_for @quote do |f| %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>
+
+
+ <p>Mes quotes sont </p>
+ <% @quotes.each do |q| %>
+  <%= q.content %>
+ <% end %>
+  <br>
+<%= link_to 'Accueil', root_path %>

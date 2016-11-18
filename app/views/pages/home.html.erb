@@ -1,4 +1,8 @@
 <h1>Home !</h1>
 <% User.all.each do |u| %>
-  <%= u.email %>
+  <%= link_to u.email, user_path(u) %>
 <% end %>
+
+<%= link_to "OUT" , destroy_user_session_path,:method => :delete %>
+<%= link_to "IN" , new_user_session_path %>
+<%= link_to "REGISTER" , new_user_registration_path %>
