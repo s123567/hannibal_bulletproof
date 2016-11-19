@@ -5,16 +5,18 @@
     <%= f.input :content %>
     <%= f.button :submit %>
   <% end %>
-  <%= render 'shared/follow_form' %>
+  
 <% end %>
 
 <%= render 'shared/follow_stats' %>
-
+<%= render 'shared/follow_form' %>
 
  <p>Mes <%= @user.quotes.size if @user.quotes.size > 1 %> quotes sont </p>
  <% @quotes.each do |q| %>
   <%= q.content %>
+  <% if @user == current_user %>
   <%= link_to 'X', quote_path(q), method: :delete%>
+  <% end %>
  <% end %>
   <br>
   <% if current_user.likes.any? %>
@@ -27,7 +29,7 @@
   <% if @user == current_user %>
     <p>All the quotes</p>
     <% Quote.all.each do |quote|%>
-      <p><%= quote.content %> de l'user <%= quote.user.email %></p>
+      <p><%= quote.content %> de l'user <%= link_to quote.user.email, user_path(quote.user) %></p>
       <% if @user.liked?(quote) %>
       <li><span><%= link_to 'unlike', like_path(current_user.likes.where(quote: quote).first), method: :delete %></span></li>
       <% else %>
