@@ -10,6 +10,7 @@ before_action :find_user, only:[:show, :following, :followers]
     #   @user = current_user
     # end
     @quotes = @user.quotes.all
+    @total_quotes = Quote.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def following
