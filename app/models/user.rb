@@ -25,7 +25,6 @@ class User < ApplicationRecord
     
   end
 
-private
   def liked?(quote)
     quote.likes.where(user: self).any?
     

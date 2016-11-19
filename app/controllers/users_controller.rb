@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :find_user, only:[:show]
+before_action :find_user, only:[:show, :following, :followers]
   def new
     
   end
@@ -9,6 +9,21 @@ before_action :find_user, only:[:show]
     if user_signed_in?
       @user = current_user
     end
+  end
+
+  def following
+    @title = 'following'
+
+    @users = @user.following
+    render 'show_follow'
+    
+  end
+
+  def followers
+    @title = "Followers"
+
+    @users = @user.followers
+    render 'show_follow'
   end
 
   private

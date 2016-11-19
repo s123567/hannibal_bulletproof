@@ -28,3 +28,11 @@ users = User.take(6)
   users.each { |user| user.quotes.create!(content:content) }
 end
 
+# Following relationships
+users = User.all
+user  = users.first
+following = users[2..7]
+followers = users[3..8]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+

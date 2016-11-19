@@ -5,7 +5,10 @@
     <%= f.input :content %>
     <%= f.button :submit %>
   <% end %>
+  <%= render 'shared/follow_form' %>
 <% end %>
+
+<%= render 'shared/follow_stats' %>
 
 
  <p>Mes <%= @user.quotes.size if @user.quotes.size > 1 %> quotes sont </p>
