@@ -13,7 +13,7 @@ User.create!(
   email:'bob@bob.com',
   password:'testtest')
 
-25.times do |n|
+10.times do |n|
   email = "bob-#{n+1}@user.com"
   password = 'testtest'
 
@@ -23,7 +23,7 @@ User.create!(
 end
 
 users = User.take(6)
-25.times do |n|
+10.times do |n|
   content = Faker::Lorem.sentence(3)
   users.each { |user| user.quotes.create!(content:content) }
 end
